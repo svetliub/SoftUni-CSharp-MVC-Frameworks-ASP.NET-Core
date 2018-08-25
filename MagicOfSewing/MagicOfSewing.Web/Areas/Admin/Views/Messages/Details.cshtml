@@ -1,0 +1,38 @@
+﻿@model MessageDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th colspan="3" style="text-align:center; background-color:gray">Subject: @Model.Subject</th>
+        </tr>
+        <tr>
+            <th>Date: @Model.SendTime</th>
+            <th>Sender: @Model.Name</th>
+            <th>Email: @Model.Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th colspan="3" style="text-align:initial">Message: @Model.Message</th>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row product-action-holder mt-4 d-flex justify-content-around">
+    <form asp-area="Admin" asp-controller="Messages" asp-action="Answer" asp-route-id="@Model.Id" method="post">
+        <div>
+            <button type="submit" id="send" class="btn send">Answer</button>
+        </div>
+    </form>
+    <form asp-area="Admin" asp-controller="Messages" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+        <div>
+            <button type="submit" id="send" class="btn send">Delete</button>
+        </div>
+    </form>
+    <a class="btn btn-light" asp-area="Admin" asp-controller="Messages" asp-action="Index">Cancel</a>
+</div>
+

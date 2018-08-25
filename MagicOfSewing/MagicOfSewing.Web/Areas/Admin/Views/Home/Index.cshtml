@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 style="text-align:center">Admin area</h2>
+
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="text-align:center"><a asp-area="Admin" asp-controller="Articles" asp-action="Index" class="nav-link">All Articles</a></li>
+            <li class="list-group-item" style="text-align:center"><a asp-area="Admin" asp-controller="Videos" asp-action="Index" class="nav-link">All Videos</a></li>
+            <li class="list-group-item" style="text-align:center"><a asp-area="Admin" asp-controller="Strategies" asp-action="Index" class="nav-link">All Strategies</a></li>
+            <li class="list-group-item" style="text-align:center"><a asp-area="Admin" asp-controller="Users" asp-action="Index" class="nav-link">All Users</a></li>
+            <li class="list-group-item" style="text-align:center"><a asp-area="Admin" asp-controller="Fabrics" asp-action="Index" class="nav-link">All Fabrics</a></li>
+            <li class="list-group-item" style="text-align:center"><a asp-area="Admin" asp-controller="Messages" asp-action="Index" class="nav-link">All Messages</a></li>
+            <li class="list-group-item" style="text-align:center"><a asp-area="Admin" asp-controller="Posts" asp-action="Index" class="nav-link">All Posts</a></li>
+        </ul>
+    </div>
+</div>

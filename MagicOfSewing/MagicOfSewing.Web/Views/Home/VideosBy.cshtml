@@ -1,0 +1,14 @@
+﻿@model PaginatedList<VideoConciseViewModel>
+
+@{
+    ViewData["Title"] = "VideosBy";
+}
+<br />
+<h2 style="text-align:center">Videos by @Model.First().Author</h2>
+<hr />
+<br />
+<div class="row">
+    @Html.DisplayForModel()
+</div>
+
+<partial name="_Pagination" />

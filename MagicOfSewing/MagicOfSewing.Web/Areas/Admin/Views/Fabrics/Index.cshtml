@@ -1,0 +1,23 @@
+﻿@model PaginatedList<FabricConciseViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 style="text-align:center">All Fabrics</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th colspan="2" style="text-align:center; background-color:#cccccc">Fabrics</th>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.DisplayForModel()
+    </tbody>
+</table>
+
+<partial name="_Pagination" />

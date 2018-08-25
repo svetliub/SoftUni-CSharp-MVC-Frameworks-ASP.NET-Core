@@ -1,0 +1,66 @@
+﻿@page "{id}/{slug}"
+@model MagicOfSewing.Web.Pages.Articles.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-6">
+        <div class="card" style="width: 58rem; justify-content:center">
+            <div class="card-body">
+                <h3 class="card-title">@Model.Article.Title</h3>
+                <p class="card-subtitle mb-2 text-muted">@Model.Article.PublishDateTime by @Model.Article.Author</p>
+                <p class="card-text" style="font-size: 15px">@Model.Article.Content</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+@if (User.IsInRole(WebConstants.AdminRole))
+{
+    <div class="row product-action-holder mt-4 d-flex justify-content-around">
+        <div>
+            <a class="btn send" asp-area="Admin" asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Article.Id" asp-route-slug="@Model.Article.Slug">Edit</a>
+        </div>
+        <form asp-area="Admin" asp-controller="Articles" asp-action="Delete" asp-route-id="@Model.Article.Id" asp-route-slug="@Model.Article.Slug" method="post">
+            <div><button type="submit" id="send" class="btn send">Delete</button></div>
+        </form>
+        <a class="btn btn-light" asp-area="Admin" asp-controller="Articles" asp-action="Index">Cancel</a>
+    </div>
+}
+
+<br />
+<h3 style="text-align:center">Comments:</h3>
+<div class="row container-fluid">
+    <div class="card container-fluid" style="width: 44rem; justify-content:center">
+        <div class="card-body">
+            @Html.DisplayFor(model => model.Posts)
+        </div>
+    </div>
+</div>
+<br />
+@if (!User.Identity.IsAuthenticated)
+{
+    <p style="text-align:center">If you want to leave a comment, login first!</p>
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <h5 style="text-align:center">Leave a Comment</h5>
+    <br />
+    <div class="container-fluid">
+        <form class="mx-auto half-width col-md-7" method="post">
+            <div class="form-group">
+                <label asp-for="@Model.PostCreation.Content">Comment</label>
+                <textarea required type="text" class="form-control" id="Content" placeholder="..." asp-for="@Model.PostCreation.Content"></textarea>
+            </div>
+            <span asp-validation-for="@Model.PostCreation.Content" class="text-danger"></span>
+
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn send" asp-page-handler="Add">Comment</button>
+                <a class="btn btn-light" asp-area="" asp-controller="Home" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+}

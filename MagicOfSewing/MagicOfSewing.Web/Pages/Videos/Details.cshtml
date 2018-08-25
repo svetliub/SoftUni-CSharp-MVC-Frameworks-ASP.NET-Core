@@ -1,0 +1,72 @@
+﻿@page "{id}/{slug}"
+@model MagicOfSewing.Web.Pages.Videos.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+<div class="row">
+    <div class="card" style="width: 74rem; justify-content:center">
+        <div class="card-body">
+            <h2 style="text-align:center">@Model.Gosho.Title</h2>
+            <br />
+            <div class="row">
+                <div class="col-md-6 text-center mb-3">
+                    <iframe width="550" height="315" src="https://www.youtube.com/embed/@Model.Gosho.YoutubeId"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-6 text-center">
+                    <p class="text-left" style="font-size: 10px">@Model.Gosho.PublishDateTime</p>
+                    <p class="text-justify" style="font-size: 15px">@Model.Gosho.Description</p>
+                    <p class="text-right">by @Model.Gosho.Author</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+@if (User.IsInRole(WebConstants.AdminRole))
+{
+    <div class="row product-action-holder mt-4 d-flex justify-content-around">
+        <div><a class="btn send" asp-area="Admin" asp-controller="Videos" asp-action="Edit" asp-route-id="@Model.Gosho.Id" asp-route-slug="@Model.Gosho.Slug">Edit</a></div>
+        <form asp-area="Admin" asp-controller="Videos" asp-action="Delete" asp-route-id="@Model.Gosho.Id" asp-route-slug="@Model.Gosho.Slug" method="post">
+            <div><button type="submit" id="send" class="btn send">Delete</button></div>
+        </form>
+        <a class="btn btn-light" asp-area="Admin" asp-controller="Videos" asp-action="Index">Cancel</a>
+    </div>
+}
+
+
+<br />
+<h3 style="text-align:center">Comments:</h3>
+<div class="row container-fluid">
+    <div class="card container-fluid" style="width: 44rem; justify-content:center">
+        <div class="card-body">
+            @Html.DisplayFor(model => model.Posts)
+        </div>
+    </div>
+</div>
+<br />
+@if (!User.Identity.IsAuthenticated)
+{
+    <p style="text-align:center">If you want to leave a comment, login first!</p>
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <h5 style="text-align:center">Leave a Comment</h5>
+    <br />
+    <div class="container-fluid">
+        <form class="mx-auto half-width col-md-7" method="post">
+            <div class="form-group">
+                <label asp-for="@Model.PostCreation.Content">Comment</label>
+                <textarea required type="text" class="form-control" id="Content" placeholder="..." asp-for="@Model.PostCreation.Content"></textarea>
+            </div>
+            <span asp-validation-for="@Model.PostCreation.Content" class="text-danger"></span>
+
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn send" asp-page-handler="Add">Comment</button>
+                <a class="btn btn-light" asp-area="" asp-controller="Home" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+}

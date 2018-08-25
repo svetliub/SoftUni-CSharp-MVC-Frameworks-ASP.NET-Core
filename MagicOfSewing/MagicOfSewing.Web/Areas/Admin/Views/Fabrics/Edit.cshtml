@@ -1,0 +1,37 @@
+﻿@model FabricEditBindingModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2 style="text-align:center">Edit fabric</h2>
+<br />
+<div class="container-fluid">
+    <form asp-area="Admin" asp-controller="Fabrics" asp-action="Edit" class="mx-auto half-width col-md-7" method="post">
+        @Html.FormGroupFor(model => model.Name)
+        @Html.FormGroupFor(model => model.Slug)
+
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea type="text" class="form-control" id="Content" placeholder="..." asp-for="Description"></textarea>
+        </div>
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+        @Html.FormGroupFor(model => model.ImageUrl)
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" id="send" class="btn send">Edit</button>
+            <a class="btn btn-light" asp-area="Admin" asp-controller="Home" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/create-slug.js"></script>
+    <script>
+        $(function () {
+            createSlug("@(Html.IdFor(model => model.Name))" ,"@(Html.IdFor(model => model.Slug))")
+        });
+    </script>
+}
+

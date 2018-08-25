@@ -1,0 +1,14 @@
+﻿@model FabricConciseViewModel
+
+<tr>
+    <td>
+        <a asp-area="Admin" asp-controller="Fabrics" asp-action="Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+            <img class="img" style="width:70px; height:40px" src="@Model.ImageUrl" />
+        </a>
+    </td>
+    <td style="vertical-align: middle">
+        <a asp-area="Admin" asp-controller="Fabrics" asp-action="Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+            @Model.Name
+        </a>
+    </td>
+</tr>

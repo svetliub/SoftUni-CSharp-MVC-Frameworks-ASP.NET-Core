@@ -1,0 +1,28 @@
+﻿@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    var firstDisabled = Model.PageIndex == 1 ? "disabled" : "";
+    var lastDisabled = Model.TotalPages == Model.PageIndex ? "disabled" : "";
+}
+<br />
+<div class="text-center">
+    <a asp-route-pageIndex="1"
+       class="btn btn-light @firstDisabled">
+        First page
+    </a>
+    <a asp-route-pageIndex="@(Model.PageIndex - 1)"
+       class="btn btn-light @prevDisabled">
+        Previous
+    </a>
+    <span class="btn btn-light">
+        @Model.PageIndex
+    </span>
+    <a asp-route-pageIndex="@(Model.PageIndex + 1)"
+       class="btn btn-light @nextDisabled">
+        Next
+    </a>
+    <a asp-route-pageIndex="@(Model.TotalPages)"
+       class="btn btn-light @lastDisabled">
+        Last page
+    </a>
+</div>

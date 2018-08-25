@@ -1,0 +1,13 @@
+﻿@page
+@model MagicOfSewing.Web.Pages.Fabrics.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 style="text-align:center">Fabric Dictionary</h2>
+<br />
+<div class="row">
+    @Html.DisplayFor(model => model.Models)
+</div>
+
+<partial name="_PaginationRazorPage" />

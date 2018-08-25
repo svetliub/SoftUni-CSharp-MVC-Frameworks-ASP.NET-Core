@@ -1,0 +1,128 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+/*.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}*/
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+/*!body style*/
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #803300;
+    background-color: #fff0e6;
+    margin-top: 10px;
+}
+
+
+/*!to change the navbar background color*/
+.navbar {
+    background-color: #ffd1b3;
+    border-color: #ffd1b3;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #803300;
+}
+
+hr {
+    border-color: #ffd1b3;
+}
+
+.navbar-light .navbar-brand{
+    color: #803300;
+}
+
+footer {
+    color: #803300;
+}
+
+.btn-light {
+    color: #803300;
+    background-color: #fff0e6;
+    border-color: #fff0e6;
+}
+
+.form-control{
+    color: #803300;
+    background-color: white;
+    border: 1px solid #fff0e6;
+}
+
+.dropdown:hover > .dropdown-menu {
+    background-color: #fff0e6;
+}
+
+.dropdown-item {
+    color: #803300;
+    background-color: #fff0e6;
+}
+
+.dropdown-menu {
+    background-color: #fff0e6;
+}
+
+.mr-sm-2 {
+    color: #803300;
+    background-color: #fff0e6;
+    border: 1px solid #fff0e6;
+}
+
+textarea {
+    width: 300px;
+    height: 190px;
+}
+
+label h2{
+    color: #803300;
+}
+
+.send {
+    background-color: #ffd1b3;
+    color: #803300;
+}
+
+.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.row {
+    vertical-align: middle;
+}

@@ -1,0 +1,43 @@
+﻿@model StrategyEditBindingModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h2 style="text-align:center">Edit article</h2>
+<br />
+<div class="container-fluid">
+    <form asp-area="Admin" asp-controller="Strategies" asp-action="Edit" class="mx-auto half-width col-md-7" method="post">
+        @Html.FormGroupFor(model => model.Title)
+        @Html.FormGroupFor(model => model.Slug)
+
+        <div class="form-group">
+            <label asp-for="Content">Content</label>
+            <textarea type="text" class="form-control" id="Content" placeholder="..." asp-for="Content"></textarea>
+        </div>
+        <span asp-validation-for="Content" class="text-danger"></span>
+
+        @Html.FormGroupFor(model => model.Priority)
+
+        @*<div class="form-group">
+            <label asp-for="Priority"></label>
+            <div class="form-control">
+                <select asp-for="Priority" asp-items="(SelectList)ViewBag.SelectList" class="form-control"></select>
+                <span class="text-danger" asp-validation-for="Priority"></span>
+            </div>
+        </div>*@
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" id="send" class="btn send">Edit</button>
+            <a class="btn btn-light" asp-area="Admin" asp-controller="Home" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/create-slug.js"></script>
+    <script>
+        $(function () {
+            createSlug("@(Html.IdFor(model => model.Title))" ,"@(Html.IdFor(model => model.Slug))")
+        });
+    </script>
+}

@@ -1,0 +1,35 @@
+﻿@model VideoDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+<div class="row">
+    <div class="card" style="width: 74rem; justify-content:center">
+        <div class="card-body">
+            <h2 style="text-align:center">@Model.Title</h2>
+            <br />
+            <div class="row">
+                <div class="col-md-6 text-center mb-3">
+                    <iframe width="550" height="315" src="https://www.youtube.com/embed/@Model.YoutubeId"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-6 text-center">
+                    <p class="text-left" style="font-size: 10px">@Model.PublishDateTime</p>
+                    <p class="text-justify" style="font-size: 15px">@Model.Description</p>
+                    <p class="text-right">by @Model.Author</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+@if (User.IsInRole(WebConstants.AdminRole))
+{
+    <div class="row product-action-holder mt-4 d-flex justify-content-around">
+        <div><a class="btn send" asp-area="Admin" asp-controller="Videos" asp-action="Edit" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">Edit</a></div>
+        <form asp-area="Admin" asp-controller="Videos" asp-action="Delete" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug" method="post">
+            <div><button type="submit" id="send" class="btn send">Delete</button></div>
+        </form>
+        <a class="btn btn-light" asp-area="Admin" asp-controller="Videos" asp-action="Index">Cancel</a>
+    </div>
+}

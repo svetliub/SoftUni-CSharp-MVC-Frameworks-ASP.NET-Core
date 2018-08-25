@@ -1,0 +1,30 @@
+﻿@model ArticleDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-6">
+        <div class="card" style="width: 58rem; justify-content:center">
+            <div class="card-body">
+                <h3 class="card-title">@Model.Title</h3>
+                <p class="card-subtitle mb-2 text-muted">@Model.PublishDateTime by @Model.Author</p>
+                <p class="card-text" style="font-size: 15px">@Model.Content</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+@if (User.IsInRole(WebConstants.AdminRole))
+{
+    <div class="row product-action-holder mt-4 d-flex justify-content-around">
+        <div>
+        <a class="btn send" asp-area="Admin" asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">Edit</a>
+        </div>
+        <form asp-area="Admin" asp-controller="Articles" asp-action="Delete" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug" method="post">
+            <div><button type="submit" id="send" class="btn send">Delete</button></div>
+        </form>
+        <a class="btn btn-light" asp-area="Admin" asp-controller="Articles" asp-action="Index">Cancel</a>
+    </div>
+}

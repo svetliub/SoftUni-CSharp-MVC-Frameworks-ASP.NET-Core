@@ -1,0 +1,39 @@
+﻿@page
+@model MagicOfSewing.Web.Pages.Home.ContactsModel
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+<h2 style="text-align:center">Contacts</h2>
+<div class="container-fluid">
+    <form class="mx-auto half-width col-md-7">
+        <strong>Stela: </strong> <a href="mailto:stela@megicofsewing.com">stela@megicofsewing.com</a><br />
+        <strong>Kristiana: </strong> <a href="mailto:kristiana@megicofsewing.com">kristiana@megicofsewing.com</a>
+    </form>
+</div>
+<br />
+<div class="container-fluid">
+    <form class="mx-auto half-width col-md-7" method="post">
+        @Html.FormGroupFor(model => model.Name)
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" placeholder="..." asp-for="Email">
+        </div>
+        <span asp-validation-for="Email" class="text-danger"></span>        
+        @Html.FormGroupFor(model => model.Subject)
+
+        <div class="form-group">
+            <label asp-for="Message">Message</label>
+            <textarea type="text" class="form-control" id="Message" placeholder="..." asp-for="Message"></textarea>
+        </div>
+        <span asp-validation-for="Message" class="text-danger"></span>
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" id="send" class="btn send" asp-page-handler="Send">Send</button>
+            <a class="btn btn-light" asp-controller="Home" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

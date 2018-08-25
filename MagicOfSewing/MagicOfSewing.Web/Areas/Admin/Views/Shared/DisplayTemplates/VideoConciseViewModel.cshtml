@@ -1,0 +1,24 @@
+﻿@model VideoConciseViewModel
+
+<tr>
+    <td style="vertical-align: middle">
+        <a asp-page="/Videos/Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+            @Model.PublishDateTime
+        </a>
+    </td>
+    <td style="vertical-align: middle">
+        <a asp-page="/Videos/Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+            <img class="img-thumbnail" style="width:70px; height:40px" src="https://img.youtube.com/vi/@Model.YoutubeId/hqdefault.jpg" />
+        </a>
+    </td>
+    <td style="vertical-align: middle">
+        <a asp-page="/Videos/Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+            @Model.Title
+        </a>
+    </td>
+    <td style="vertical-align: middle">
+        <a asp-page="/Videos/Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+            @Model.Author
+        </a>
+    </td>
+</tr>

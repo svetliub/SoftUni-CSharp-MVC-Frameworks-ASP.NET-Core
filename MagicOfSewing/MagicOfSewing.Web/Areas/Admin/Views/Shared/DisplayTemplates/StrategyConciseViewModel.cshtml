@@ -1,0 +1,9 @@
+﻿@model StrategyConciseViewModel
+
+<tr>    
+    <td style="vertical-align: middle">
+        <a asp-area="Admin" asp-controller="Strategies" asp-action="Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+            @Model.Title
+        </a>
+    </td>
+</tr>

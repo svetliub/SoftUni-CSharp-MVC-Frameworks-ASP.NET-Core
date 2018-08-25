@@ -1,0 +1,69 @@
+﻿@model ArticleCreationBindingModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+@{
+    var authors = this.ViewData["Authors"] as IEnumerable<AuthorConciseViewModel>;
+    var categories = this.ViewData["Categories"] as IEnumerable<CategoryConciseViewModel>;
+    IEnumerable<SelectListItem> authorsSelectList = null;
+    IEnumerable<SelectListItem> categoriesSelectList = null;
+
+    if (authors != null)
+    {
+        authorsSelectList = authors.Select(a => new SelectListItem() { Text = a.UserName, Value = a.Id });
+    }
+
+    if (categories != null)
+    {
+        categoriesSelectList = categories.Select(c => new SelectListItem() { Text = c.Name, Value = c.Id.ToString() });
+
+    }
+}
+
+
+<h2 style="text-align:center">Add article</h2>
+<br />
+<div class="container-fluid">
+    <form asp-area="Admin" asp-controller="Articles" asp-action="Add" class="mx-auto half-width col-md-7" method="post">
+        @Html.FormGroupFor(model => model.Title)
+        @Html.FormGroupFor(model => model.Slug)
+
+        <div class="form-group">
+            <label asp-for="Content">Content</label>
+            <textarea type="text" class="form-control" id="Content" placeholder="..." asp-for="Content"></textarea>
+        </div>
+        <span asp-validation-for="Content" class="text-danger"></span>
+
+        <div class="form-group">
+            <label asp-for="AuthorId"></label>
+            <div class="form-control">
+                <select asp-for="AuthorId" asp-items="authorsSelectList" class="form-control"></select>
+                <span class="text-danger" asp-validation-for="AuthorId"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ArticleCategoryId"></label>
+            <div class="form-control">
+                <select asp-for="ArticleCategoryId" asp-items="categoriesSelectList" class="form-control"></select>
+                <span class="text-danger" asp-validation-for="ArticleCategoryId"></span>
+            </div>
+        </div>
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" id="send" class="btn send">Add</button>
+            <a class="btn btn-light" asp-area="Admin" asp-controller="Home" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/create-slug.js"></script>
+    <script>
+        $(function () {
+            createSlug("@(Html.IdFor(model => model.Title))" ,"@(Html.IdFor(model => model.Slug))")
+        });
+    </script>
+}
+
+

@@ -1,0 +1,15 @@
+﻿@model PaginatedList<ArticleConciseViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 style="text-align:center">How to... Articles</h2>
+<br />
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-6">
+        @Html.DisplayForModel()
+    </div>    
+</div>
+
+<partial name="_Pagination" />

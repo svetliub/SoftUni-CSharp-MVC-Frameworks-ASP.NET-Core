@@ -1,0 +1,54 @@
+﻿@model VideoCreationBindingModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+@{
+    var authors = this.ViewData["Authors"] as IEnumerable<AuthorConciseViewModel>;
+    IEnumerable<SelectListItem> authorsSelectList = null;
+
+    if (authors != null)
+    {
+        authorsSelectList = authors.Select(a => new SelectListItem() { Text = a.UserName, Value = a.Id });
+    }
+}
+
+
+<h2 style="text-align:center">Add video</h2>
+<br />
+<div class="container-fluid">
+    <form asp-area="Admin" asp-controller="Videos" asp-action="Add" class="mx-auto half-width col-md-7" method="post">
+        @Html.FormGroupFor(model => model.Title)
+        @Html.FormGroupFor(model => model.Slug)
+        @Html.FormGroupFor(model => model.YoutubeId)
+
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea type="text" class="form-control" id="Content" placeholder="..." asp-for="Description"></textarea>
+        </div>
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+        <div class="form-group">
+            <label asp-for="UserId"></label>
+            <div class="form-control">
+                <select asp-for="UserId" asp-items="authorsSelectList" class="form-control"></select>
+                <span class="text-danger" asp-validation-for="UserId"></span>
+            </div>
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" id="send" class="btn send">Add</button>
+            <a class="btn btn-light" asp-area="Admin" asp-controller="Home" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/create-slug.js"></script>
+    <script>
+        $(function () {
+            createSlug("@(Html.IdFor(model => model.Title))" ,"@(Html.IdFor(model => model.Slug))")
+        });
+    </script>
+}

@@ -1,0 +1,25 @@
+﻿@model PaginatedList<MessageConciseViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 style="text-align:center">All Messages</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th colspan="4" style="text-align:center; background-color:#cccccc">Messages</th>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <th>Sender name</th>
+            <th>Subject</th>
+            <th>Is Answerd</th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.DisplayForModel()
+    </tbody>
+</table>
+
+<partial name="_Pagination" />

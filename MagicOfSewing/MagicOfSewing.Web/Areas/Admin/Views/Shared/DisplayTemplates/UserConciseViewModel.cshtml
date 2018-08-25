@@ -1,0 +1,19 @@
+﻿@model UserConciseViewModel
+
+<tr>
+    <td>
+        <a asp-area="Admin" asp-controller="Users" asp-action="Details" asp-route-id="@Model.Id">
+            <img class="img" style="width:40px; height:40px" src="@Model.AvatarUrl" />
+        </a>
+    </td>
+    <td style="vertical-align: middle">
+        <a asp-area="Admin" asp-controller="Users" asp-action="Details" asp-route-id="@Model.Id">
+            @Model.UserName
+        </a>
+    </td>
+    <td style="vertical-align: middle">
+        <a asp-area="Admin" asp-controller="Users" asp-action="Details" asp-route-id="@Model.Id">
+            @Model.Email
+        </a>
+    </td>
+</tr>

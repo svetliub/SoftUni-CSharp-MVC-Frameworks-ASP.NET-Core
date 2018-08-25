@@ -1,0 +1,20 @@
+﻿@model MessageConciseViewModel
+
+<tr>
+    <td>
+        <a asp-area="Admin" asp-controller="Messages" asp-action="Details" asp-route-id="@Model.Id">
+            @Model.SendTime
+        </a>
+    </td>
+    <td>
+        <a asp-area="Admin" asp-controller="Messages" asp-action="Details" asp-route-id="@Model.Id">
+            @Model.Name
+        </a>
+    </td>
+    <td>
+        <a asp-area="Admin" asp-controller="Messages" asp-action="Details" asp-route-id="@Model.Id">
+            @Model.Subject
+        </a>
+    </td>
+    <td>@Html.DisplayFor(model => model.IsAnswered)</td>
+</tr>

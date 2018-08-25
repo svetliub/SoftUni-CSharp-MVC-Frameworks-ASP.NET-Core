@@ -1,0 +1,21 @@
+﻿@model IEnumerable<StrategyConciseViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 style="text-align:center">All Strategies</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="text-align:center; background-color:#cccccc">Strategies</th>
+        </tr>
+        <tr>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.DisplayForModel()
+    </tbody>
+</table>

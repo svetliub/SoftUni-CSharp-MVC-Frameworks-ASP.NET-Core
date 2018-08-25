@@ -1,0 +1,19 @@
+﻿@model ArticleConciseViewModel
+
+<tr>
+    <td>
+        <a asp-page="/Articles/Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+            @Model.PublishDateTime
+        </a>
+    </td>    
+    <td>
+        <a asp-page="/Articles/Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+            @Model.Title
+        </a>
+    </td>
+    <td>
+        <a asp-page="/Articles/Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+            @Model.Author
+        </a>
+    </td>
+</tr>

@@ -1,0 +1,9 @@
+﻿@model VideoConciseViewModel
+
+<div class="col-4 text-center">
+    <a asp-page="/Videos/Details" asp-route-id="@Model.Id" asp-route-slug="@Model.Slug">
+        <img class="img-thumbnail" src="https://img.youtube.com/vi/@Model.YoutubeId/hqdefault.jpg" />
+    </a>
+    <h5>@Model.Title</h5>
+    <h6>@Model.Author</h6>
+</div>

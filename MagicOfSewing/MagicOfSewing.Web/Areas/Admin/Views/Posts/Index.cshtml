@@ -1,0 +1,26 @@
+﻿@model PaginatedList<PostConciseViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 style="text-align:center">All Posts</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th colspan="5" style="text-align:center; background-color:#cccccc">Articles</th>
+        </tr>
+        <tr>
+            <th width="15%">Date</th>
+            <th width="17%">User</th>
+            <th width="40%">Content</th>
+            <th width="15%">Is Approved?</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.DisplayForModel()
+    </tbody>
+</table>
+
+<partial name="_Pagination" />
